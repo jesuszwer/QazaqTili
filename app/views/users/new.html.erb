@@ -1,0 +1,28 @@
+<div class="container is-fluid">
+  <h1 class="title">Регистрация пользователя</h1>
+  <%= form_with(model: @user, url: signup_path) do |form| %>
+    <div class="field">
+      <%= form.label :email, class: 'label' %>
+      <div class="control">
+        <%= form.text_field :email, class: 'input' %>
+      </div>
+    </div>
+    <div class="field">
+      <%= form.label :password, class: 'label' %>
+      <div class="control">
+        <%= form.password_field :password, class: 'input' %>
+      </div>
+    </div>
+    <div class="field">
+      <%= form.label :password_confirmation, 'Подтвердите пароль', class: 'label' %>
+      <div class="control">
+        <%= form.password_field :password_confirmation, class: 'input' %>
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <%= form.submit 'Зарегистрироваться', class: 'button is-primary' %>
+      </div>
+    </div>
+  <% end %>
+</div>

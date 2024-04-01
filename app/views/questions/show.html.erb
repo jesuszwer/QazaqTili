@@ -1,0 +1,13 @@
+<div class="container is-fluid">
+  <h2><%= @question.content %></h2>
+  <ul>
+    <% @question.options.each do |option| %>
+      <li>
+        <%= option.content %>
+        <% if option.correct %>
+          (Правильный ответ)
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>

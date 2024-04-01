@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>QazaqTili | <%= @page_title || "Title" %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+  </head>
+  <body>
+    <%= render 'shared/header' %>
+    <% if notice %>
+      <div class="notification is-success">
+        <button class="delete" onclick="this.parentElement.style.display='none'"></button>
+        <%= notice %>
+      </div>
+    <% end %>
+    <% if alert %>
+      <div class="notification is-danger">
+        <button class="delete" onclick="this.parentElement.style.display='none'"></button>
+        <%= alert %>
+      </div>
+    <% end %>
+    <main class="py-4 main">
+      <%= yield %>
+    </main>
+    <%= render 'shared/footer' %>
+  </body>
+</html>

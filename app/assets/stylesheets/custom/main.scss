@@ -1,0 +1,18 @@
+@import "color";
+@import "flash";
+
+@import "header";
+
+@import "footer";
+
+body {
+  overflow-y: hidden; /* Скрыть вертикальную полосу прокрутки */
+}
+
+.has-background-grey-light {
+  background-color: #d1d1d1 !important;
+}
+
+.main {
+  margin-bottom: 58px;
+}
