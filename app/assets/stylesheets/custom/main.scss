@@ -16,3 +16,24 @@ body {
 .main {
   margin-bottom: 58px;
 }
+
+.image {
+  display: block;
+  margin: 0 auto; /* Чтобы изображение было по центру */
+  max-width: 100%; /* Чтобы изображение не выходило за пределы контейнера */
+  height: auto; /* Чтобы сохранить пропорции изображения */
+}
+
+.image.is-inline-block img {
+  border-radius: 50%;
+}
+
+.is-256x256 {
+  max-width: 256px;
+  max-height: 256px;
+
+  width: max-content;
+  height: max-content;
+}
+
+

@@ -1,0 +1,18 @@
+<div class="container is-fluid">
+  <h1 class="title">Редактирование профиля</h1>
+  <%= form_with(model: @user, url: profile_path, html: { multipart: true }) do |form| %>
+    <div class="field">
+      <%= form.label :avatar, class: "label" do %>
+        Выберите изображение
+      <% end %>
+      <div class="control">
+        <%= form.file_field :avatar, class: "file-input" %>
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <%= form.submit "Сохранить", class: "button is-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

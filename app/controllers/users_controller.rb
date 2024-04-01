@@ -15,11 +15,29 @@ class UsersController < ApplicationController
   end
 
   def index
+    @page_title = "Профиль"
+  end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    if @user.update(edit_user_params)
+      redirect_to profile_path, notice: 'Аватарка обновлена!'
+    else
+      flash.now[:alert] = 'Ошибка при загрузке аватарки'
+      render :edit, status: :unprocessable_entity
+    end
   end
 
 
   private
 
+  def edit_user_params
+    params.require(:user).permit(:avatar)
+  end
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
   end

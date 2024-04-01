@@ -1,11 +1,33 @@
 <div class="container is-fluid">
-  <h1 class="title">Профиль пользователя</h1>
-  <% if current_user != nil %>
-    <p class="subtitle">Вы вошли как <%= current_user.email %></p>
-    <%= button_to 'Выйти', logout_path, method: :delete %>
-  <% else %>
-    <p class="subtitle">Вы не вошли</p>
-    <%= link_to 'Войти', login_path %>
-    <%= link_to 'Зарегистрироваться', signup_path %>
-  <% end %>
+  <div class="columns is-centered">
+    <div class="column is-half">
+      <div class="has-text-centered">
+        <% if current_user %>
+          <% if current_user.avatar.present? %>
+            <figure class="image is-128x128 is-inline-block is-rounded mb-3 is-square">
+              <%= image_tag current_user.avatar.url, alt: "Аватар пользователя" %>
+            </figure>
+          <% else %>
+            <figure class="image is-128x128 is-inline-block is-rounded mb-3 is-square">
+              <%= image_tag "/default_avatar.png", alt: "Дефолтный аватар", class: "image" %>
+            </figure>
+          <% end %>
+          <p class="title is-4 "><%= current_user.email || "Пользователь не в системе" %></p>
+          <div class="mt-4">
+            <%= link_to "Редактировать профиль", profile_edit_path(current_user.id), class: "button is-info mb-3" %>
+            <%= button_to 'Выйти', logout_path, method: :delete, class: "button is-danger" %>
+          </div>
+        <% else %>
+          <figure class="image is-128x128 is-inline-block is-rounded mb-3 is-square">
+            <%= image_tag "/default_avatar.png", alt: "Дефолтный аватар", class: "image" %>
+          </figure>
+          <p class="title">Пользователь не в системе</p>
+          <div class="mt-4">
+            <%= link_to 'Войти', login_path, class: "button is-primary" %>
+            <%= link_to 'Зарегистрироваться', signup_path, class: "button is-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
