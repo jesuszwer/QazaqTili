@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   ''' Home routes '''
 
   root to: "home#index"
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
 
   # Questions
   get "/questions", to: "questions#index", as: "questions"
-  get "/questions/:id", to: "questions#show", as: "question"
+  get "/questions/testing/:id", to: "questions#show", as: "question"
 
   # Answers
   post "/answers", to: "answers#create"

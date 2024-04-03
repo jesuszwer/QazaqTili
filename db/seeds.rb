@@ -1,41 +1,45 @@
-# Создаем вопросы
-questions = [
-  { content: 'Как называется столица Франции?' },
-  { content: 'Сколько планет в Солнечной системе?' },
-  { content: 'Кто написал произведение "Война и мир"?' }
+# # Создаем тесты
+# tests = [
+#   { name: "Тест по математике",
+#     description: "Тест по математике",
+#     category: "math"}
+# ]
+
+# questions_data = [
+#   { content: "Сколько будет 2+2?",
+#     question_type: "math",
+#     test_id: 2}
+# ]
+
+# tests.each do |test_attrs|
+#   Test.create!(test_attrs)
+# end
+# puts "Тесты успешно созданы"
+
+
+# questions_data.each do |question_attrs|
+#   Question.create!(question_attrs)
+# end
+# puts "Вопросы успешно созданы"
+
+
+option_data = [
+  { content: "2",
+    question_id: 7,
+    correct: true},
+  { content: "3",
+    question_id: 7,
+    correct: false},
+  { content: "4",
+    question_id: 7,
+    correct: false},
+  { content: "5",
+    question_id: 7,
+    correct: false}
 ]
 
-# Заполняем вопросы в базе данных
-questions.each do |question_params|
-  question = Question.create!(question_params)
-
-  # Создаем ответы для каждого вопроса
-  case question.content
-  when 'Как называется столица Франции?'
-    options = [
-      { content: 'Лондон' },
-      { content: 'Рим' },
-      { content: 'Париж', correct: true },
-      { content: 'Мадрид' }
-    ]
-  when 'Сколько планет в Солнечной системе?'
-    options = [
-      { content: '6' },
-      { content: '8', correct: true },
-      { content: '10' },
-      { content: '12' }
-    ]
-  when 'Кто написал произведение "Война и мир"?'
-    options = [
-      { content: 'Лев Толстой', correct: true },
-      { content: 'Федор Достоевский' },
-      { content: 'Александр Пушкин' },
-      { content: 'Иван Тургенев' }
-    ]
-  end
-
-  # Заполняем ответы в базе данных
-  options.each do |option_params|
-    question.options.create!(option_params)
-  end
+option_data.each do |option_attrs|
+  Option.create!(option_attrs)
 end
+
+puts "Варианты ответов успешно созданы"

@@ -1,13 +1,24 @@
 <div class="container is-fluid">
-  <h2><%= @question.content %></h2>
-  <ul>
-    <% @question.options.each do |option| %>
-      <li>
-        <%= option.content %>
-        <% if option.correct %>
-          (Правильный ответ)
+  <h1 class="title is-3">Тест: <%= @test.name %></h1>
+  <% @test.questions.each do |question| %>
+    <div class="box mb-4">
+      <h2 class="title is-4"><%= question.content %></h2>
+      <ul class="menu-list">
+        <% question.options.each do |option| %>
+          <li>
+            <label class="radio">
+              <input type="radio" name="<%= "question_#{question.id}" %>" value="<%= option.id %>">
+              <%= option.content %>
+            </label>
+            <% if option.correct %>
+              <%# <span class="tag is-success">Правильный ответ</span> %>
+            <% end %>
+          </li>
         <% end %>
-      </li>
-    <% end %>
-  </ul>
+      </ul>
+    </div>
+  <% end %>
+  <div class="buttons is-centered">
+    <%= button_to "Завершить тест", answers_path, method: :post, class: "button is-primary" %>
+  </div>
 </div>

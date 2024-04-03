@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_01_163854) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_03_131157) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +29,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_01_163854) do
     t.string "question_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "test_id"
+    t.index ["test_id"], name: "index_questions_on_test_id"
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_tests_on_name", unique: true, where: "(name IS NOT NULL)"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,9 +51,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_01_163854) do
     t.string "remember_me_token"
     t.datetime "remember_me_token_expires_at"
     t.string "avatar"
+    t.boolean "admin", default: false, null: false
+    t.index ["admin"], name: "index_users_on_admin", where: "(admin = true)"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
   end
 
   add_foreign_key "options", "questions"
+  add_foreign_key "questions", "tests"
 end

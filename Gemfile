@@ -53,6 +53,15 @@ gem "bootsnap", require: false
 # image uploader
 gem 'carrierwave'
 
+# minimagick
+# gem 'mini_magick'
+
+gem "sassc-rails"
+
+gem "rails_admin"
+
+
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
