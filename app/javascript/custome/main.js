@@ -1,1 +1,2 @@
-import './flash.js'
+import "./flash.js";
+// import "./postAnswerFunction.js";

@@ -1,17 +1,18 @@
 <div class="container is-fluid">
   <h1 class="title is-3 mb-2">Тест: <%= @test.name %></h1>
-  <% @test.questions.each do |question| %>
+  <% @test.questions.each_with_index do |question, index| %>
     <div class="box mb-4">
+      <p class="subtitle is-size-6">#<%= index+1 %></p>
       <h2 class="is-size-4 mb-2"><%= question.content %></h2>
       <ul class="menu-list">
-        <% question.options.each do |option| %>
+        <% question.options.shuffle.each do |option| %>
           <li>
             <label class="radio py-2 is-size-5">
               <input type="radio" name="<%= "question_#{question.id}" %>" value="<%= option.id %>">
               <%= option.content %>
             </label>
             <% if option.correct %>
-              <span class="tag is-success">Правильный ответ</span>
+              <%# <span class="tag is-success">Правильный ответ</span> %>
             <% end %>
           </li>
         <% end %>
@@ -19,6 +20,46 @@
     </div>
   <% end %>
   <div class="buttons is-centered">
-    <%= button_to "Завершить тест", answers_path, method: :post, class: "button is-primary has-text-white" %>
+    <button class="button is-primary has-text-white" id="finish-test-button">Завершить</button>
   </div>
 </div>
+<%# ================Script================================== %>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    console.log("DOM загружен");
+    const button = document.querySelector("#finish-test-button");
+
+    button.addEventListener("click", function() {
+      const questions = document.querySelectorAll(".box");
+
+      const jsonData = [];
+
+      questions.forEach(function(question) {
+        const id = question.dataset.questionId;
+        const content = question.querySelector("h2").textContent;
+        const selectedOption = question.querySelector("input[type='radio']:checked");
+
+        if (selectedOption) {
+          const answerContent = selectedOption.parentElement.textContent.trim();
+          jsonData.push({
+            "id": id,
+            "content": content,
+            "question_answer": answerContent
+          });
+        }
+      });
+
+      // Отправляем JSON на сервер
+      fetch("/answer", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(jsonData)
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error("Ошибка:", error));
+    });
+  });
+</script>

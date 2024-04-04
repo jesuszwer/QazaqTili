@@ -2,15 +2,24 @@
   <h2 class="title">Все тесты</h2>
   <div class="mt-5">
     <% @tests.each do |test| %>
-      <div class="box mb-4 is-flex is-align-items-center">
-        <div>
-          <h2 class="title is-4 mb-2"><%= test.name %></h2>
-          <p class="pr-5 truncate-text"><%= test.description %></p>
+      <a href="<%= question_path(test.id) %>">
+        <div class="box mb-4 is-flex is-align-items-center">
+          <div>
+            <h2 class="title is-4 mb-2"><%= test.name %></h2>
+            <p class="truncate-text subtitle"><%= test.description %></p>
+            <p class="truncate-text has-text-primary is-size-5">
+              <% case test.category %>
+                <% when "base" %>
+                  Базовый тест
+                <% when "generated" %>
+                  Сгенерированный
+                <% else %>
+                  <%= test.category %>
+              <% end %>
+            </p>
+          </div>
         </div>
-        <div class="ml-auto">
-          <%= link_to "Пройти", question_path(test.id), class: "button is-primary" %>
-        </div>
-      </div>
+      </a>
     <% end %>
   </div>
 </div>

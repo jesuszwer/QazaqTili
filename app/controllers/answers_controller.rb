@@ -1,8 +1,18 @@
 class AnswersController < ApplicationController
 
   before_action :check_login, only: [:index, :show, :create]
+  before_action :set_test, only: [:create]
 
   def create
+    @answers = Answer.new(answer_params)
+    @answers.user = current_user
+    @answers.test = @test
+
+    if @answers.save
+      render json: @answer, status: :created
+    else
+      render json: @answer.errors, status: :unprocessable_entity
+    end
   end
 
   def index
@@ -37,6 +47,14 @@ class AnswersController < ApplicationController
   end
 
   private
+
+  def set_test
+    @test = Test.find(params[:test_id])
+  end
+
+  def answer_params
+    params.require(:answers).permit(:answers_content)
+  end
 
   def check_login
     redirect_to login_path unless logged_in?

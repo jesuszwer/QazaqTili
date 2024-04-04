@@ -277,13 +277,13 @@ question_id = 8
 
 content_data.each_slice(4) do |chunk|
   chunk.each do |content|
-    option_data << { question_id: question_id, content: content }
+    options_data << { question_id: question_id, content: content }
   end
   question_id += 1
 end
 
 
-option_data.each do |option_attrs|
+options_data.each do |option_attrs|
   Option.create!(option_attrs)
 end
 

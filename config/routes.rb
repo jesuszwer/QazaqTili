@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   # Questions
   get "/questions", to: "questions#index", as: "questions"
   get "/questions/testing/:id", to: "questions#show", as: "question"
+  get "/questions/:id", to: "questions#json", as: "question_json"
 
   # Answers
   get "/answers", to: "answers#index", as: "answers"
