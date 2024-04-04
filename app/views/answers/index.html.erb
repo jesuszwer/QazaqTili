@@ -8,7 +8,7 @@
           <p><%= test.description %></p>
         </div>
         <div class="ml-auto">
-          <%= link_to "Результаты", answer_path(current_user.id, test.id), class: "button is-primary" %>
+          <%= link_to "Результаты", answer_path(test.id, current_user.id), class: "button is-primary" %>
         </div>
       </div>
     <% end %>

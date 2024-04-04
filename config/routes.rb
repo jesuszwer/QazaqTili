@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
   # Answers
   get "/answers", to: "answers#index", as: "answers"
-  get "/answers/:user_id/:test_id", to: "answers#show", as: "answer"
+  get "/answers/:test_id/:user_id", to: "answers#show", as: "answer"
 
   post "/answers", to: "answers#create"
 

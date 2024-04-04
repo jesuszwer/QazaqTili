@@ -50,43 +50,25 @@
 #
 #
 
-# test_results = [
-#   {
-#     user_id: 1,
-#     test_id: 2,
-#     answers: {
-#       "answers": [
-#         {
-#           "type": "Перевод слов",
-#           "questions_result": [
-#             "1": "1",
-#             "2": "1",
-#             "3": "1",
-#             "4": "1",
-#             "5": "1"
-#           ],
-#           "total": 5
-#         },
-#         {
-#           "type": "Правила",
-#           "questions_result": [
-#             "1": "1",
-#             "2": "1",
-#             "3": "0",
-#             "4": "0",
-#             "5": "0"
-#           ],
-#           "total": 2
-#         },
-
-#       ],
-#       "total_true_answers": 7,
-#       "total_score": 3,
-#       "letter_score": "C",
-#       "percent_score": 60
-#     }
-#   }
-# ]
+test_results = [
+  {
+    user_id: 1,
+    test_id: 2,
+    answers: {
+      "questions_result": [
+        "1": "1",
+        "2": "1",
+        "3": "1",
+        "4": "1",
+        "5": "1"
+      ],
+      "total_true_answers": 7,
+      "total_score": 3,
+      "letter_score": "C",
+      "percent_score": 60
+    }
+  }
+]
 
 # test_results.each do |test_result_attrs|
 #   TestResult.create!(test_result_attrs)

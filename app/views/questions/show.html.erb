@@ -8,7 +8,7 @@
         <% question.options.shuffle.each do |option| %>
           <li>
             <label class="radio py-2 is-size-5">
-              <input type="radio" name="<%= "question_#{question.id}" %>" value="<%= option.id %>">
+              <input type="radio" name="<%= "#{question.id}" %>" value="<%= option.id %>">
               <%= option.content %>
             </label>
             <% if option.correct %>
@@ -19,6 +19,10 @@
       </ul>
     </div>
   <% end %>
+  <!--<div class="buttons is-centered">
+    <%= button_to "Завершить", root_path, method: :get, id: "finish-test-button", class: "button is-primary has-text-white" %>
+  </div> -->
+
   <div class="buttons is-centered">
     <button class="button is-primary has-text-white" id="finish-test-button">Завершить</button>
   </div>
@@ -26,40 +30,47 @@
 <%# ================Script================================== %>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    console.log("DOM загружен");
     const button = document.querySelector("#finish-test-button");
 
     button.addEventListener("click", function() {
       const questions = document.querySelectorAll(".box");
+      const test_id = window.location.pathname.split("/").pop();
 
       const jsonData = [];
 
       questions.forEach(function(question) {
-        const id = question.dataset.questionId;
+        const id = question.querySelector("input[type='radio']:checked").getAttribute("name");
         const content = question.querySelector("h2").textContent;
         const selectedOption = question.querySelector("input[type='radio']:checked");
-
+        
         if (selectedOption) {
           const answerContent = selectedOption.parentElement.textContent.trim();
           jsonData.push({
-            "id": id,
+            "question_id": id,
             "content": content,
             "question_answer": answerContent
           });
         }
       });
 
+      console.log(jsonData);
+
       // Отправляем JSON на сервер
-      fetch("/answer", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(jsonData)
+      const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+
+      fetch('/answers', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": csrfToken,
+        "X-Test-ID": test_id
+      },
+      body: JSON.stringify(jsonData).replace(/\\/g, '')
       })
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(error => console.error("Ошибка:", error));
+
     });
   });
 </script>

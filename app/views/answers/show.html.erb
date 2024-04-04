@@ -1,16 +1,9 @@
 <div class="container is-fluid">
   <h2 class="title"><%= @test.name %></h2>
   <div class="mt-5">
-    <% @answers.each do | answer | %>
-      <div class="box mb-4">
-        <h2 class="title is-4"><%= answer["type"] %></h2>
-        <p class="subtitle">Правильных ответов: <%= answer["total"] %></p>
-        <p class="subtitle"></p>
-      </div>
-    <% end %>
     <div class="box mb-4">
       <h2 class="title is-4">Итоги</h2>
-      <p class="subtitle">Правильных ответов: <%= @total_true_answers %></p>
+      <p class="subtitle">Правильных ответов: <%= @total_true_answers %> из <%= @test.questions.length %></p>
       <p class="subtitle">Оценка: <%= @total_score %></p>
       <% case @letter_score %>
         <% when "A" %>
