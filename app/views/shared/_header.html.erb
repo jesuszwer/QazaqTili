@@ -8,9 +8,12 @@
         <div class="column is-flex is-align-items-center">
           <div class="is-4 has-text-grey has-text-centered page-title"><%= @page_title || "Главное" %></div>
         </div>
-        <div class="navbar-item">
-          <button class="button is-info" onclick="history.back()">Назад</button>
-        </div>
+        <% if request.path == "/questions" %>
+          <div class="column is-flex is-align-items-center">
+            <a href="<%= answers_path %>" class="button is-primary">
+            <span>Результаты</span>
+          </a>
+        <% end %>
       </div>
     </nav>
   </div>

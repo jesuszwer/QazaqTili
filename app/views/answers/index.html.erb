@@ -4,11 +4,11 @@
     <% @tests.each do |test| %>
       <div class="box mb-4 is-flex is-align-items-center">
         <div>
-          <h2 class="title is-4 mb-2"><%= test.name %></h2>
-          <p class="pr-5 truncate-text"><%= test.description %></p>
+          <h2 class="title is-4"><%= test.name %></h2>
+          <p><%= test.description %></p>
         </div>
         <div class="ml-auto">
-          <%= link_to "Пройти", question_path(test.id), class: "button is-primary" %>
+          <%= link_to "Результаты", answer_path(current_user.id, test.id), class: "button is-primary" %>
         </div>
       </div>
     <% end %>

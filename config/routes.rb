@@ -31,6 +31,9 @@ Rails.application.routes.draw do
   get "/questions/testing/:id", to: "questions#show", as: "question"
 
   # Answers
+  get "/answers", to: "answers#index", as: "answers"
+  get "/answers/:user_id/:test_id", to: "answers#show", as: "answer"
+
   post "/answers", to: "answers#create"
 
   '''
@@ -43,6 +46,9 @@ Rails.application.routes.draw do
 
   у вопроса есть тип, можно создать допустим 3-4 типа вопросов, условно громатика, постановка слов,
   чтение, перевод слов и т.д. и создать на каждый из них свой индификатор в сохраняемом куки. И после чего можно узнать какой из аспектов пользователя в языке хромает.
+
+
+  как мне сделать форму теста, в котором пользователь будет выбирать один из 4 ответов на вопрос, и после чего при нажатии кнопки submit будет отправка данных об ответах в answer controller по маршруту {пусть до теста}/answer
 
   '''
 

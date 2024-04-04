@@ -7,14 +7,26 @@
 
 body {
   overflow-y: hidden; /* Скрыть вертикальную полосу прокрутки */
+  // height: 100vh;
 }
+
+.truncate-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* Указывает максимальное количество строк для отображения */
+  max-width: 100%; /* Ширина контейнера, которая будет использоваться для отображения текста */
+}
+
 
 .has-background-grey-light {
   background-color: #d1d1d1 !important;
 }
 
 .main {
-  margin-bottom: 58px;
+
+  margin-bottom: 80px;
   margin-top: 76px;
 }
 
