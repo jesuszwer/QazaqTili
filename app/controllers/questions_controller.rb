@@ -1,4 +1,7 @@
 class QuestionsController < ApplicationController
+
+  before_action :check_login, only: [:index, :show]
+
   def index
     @page_title = "Тесты"
     @tests = Test.all

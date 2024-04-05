@@ -1,5 +1,7 @@
 // Entry point for the build script in your package.json
-import "@hotwired/turbo-rails"
-import "./controllers"
-import "./custome/all"
-import "./custome/main"
+import "@hotwired/turbo-rails";
+import "./controllers";
+
+import "./custom/all"; // Import icons JS
+import "./custom/flash";
+import "./custom/postAnswerFunction";

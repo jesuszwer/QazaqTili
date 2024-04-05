@@ -32,6 +32,9 @@ gem "jbuilder"
 # sorcery authentication
 gem "sorcery"
 
+# jQuery is a JavaScript library that facilitates the creation of interactive user interfaces
+gem 'jquery-rails'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 

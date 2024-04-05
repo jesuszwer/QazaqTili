@@ -12,7 +12,7 @@
               <%= option.content %>
             </label>
             <% if option.correct %>
-              <%# <span class="tag is-success">Правильный ответ</span> %>
+              <span class="tag is-success">Правильный ответ</span>
             <% end %>
           </li>
         <% end %>
@@ -29,48 +29,5 @@
 </div>
 <%# ================Script================================== %>
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const button = document.querySelector("#finish-test-button");
-
-    button.addEventListener("click", function() {
-      const questions = document.querySelectorAll(".box");
-      const test_id = window.location.pathname.split("/").pop();
-
-      const jsonData = [];
-
-      questions.forEach(function(question) {
-        const id = question.querySelector("input[type='radio']:checked").getAttribute("name");
-        const content = question.querySelector("h2").textContent;
-        const selectedOption = question.querySelector("input[type='radio']:checked");
-        
-        if (selectedOption) {
-          const answerContent = selectedOption.parentElement.textContent.trim();
-          jsonData.push({
-            "question_id": id,
-            "content": content,
-            "question_answer": answerContent
-          });
-        }
-      });
-
-      console.log(jsonData);
-
-      // Отправляем JSON на сервер
-      const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
-
-      fetch('/answers', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRF-Token": csrfToken,
-        "X-Test-ID": test_id
-      },
-      body: JSON.stringify(jsonData).replace(/\\/g, '')
-      })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.error("Ошибка:", error));
-
-    });
-  });
+  
 </script>
