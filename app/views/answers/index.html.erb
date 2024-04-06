@@ -7,10 +7,11 @@
           <h3 class="is-size-4 has-text-weight-bold mb-2"><%= test.name %></h3>
           <p class="mb-2"><%= test.description %></p>
           <div class="is-flex">
-            <div class="">
-              <%= link_to "Результаты", answer_path(test.id, current_user.id), class: "button is-primary" %>
-            </div>
-            
+            <% if logged_in? %>
+              <div class="">
+                <%= link_to "Результаты", answer_path(test.id, current_user.id), class: "button is-primary" %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>

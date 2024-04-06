@@ -1,0 +1,11 @@
+<div class="overlay" id="overlay" >
+  <div class="overlay-welcome overlay-content is-flex is-flex-direction-column is-justify-content-space-around">
+    <%# ниже будет логотип %>
+    <figure class="image mb-3">
+      <%= image_tag "/logo.svg", alt: "Логотип", class: "logo" %>
+    </figure>
+    <h2 class="title mb-3">Добро пожаловать на <span class="has-text-primary">QazaqTili</span></h2>
+    <p class="subtitle is-size-4 mb-3">Изучай Казахский язык <span class="has-text-grey is-size-5">бесплатно, весело и эффективно</span></p>
+    <%= link_to "Войдите или зарегестрируйтесь", login_path, class: "button is-primary is-size-5" %>
+  </div>
+</div>

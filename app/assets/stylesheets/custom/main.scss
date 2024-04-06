@@ -1,5 +1,6 @@
 @import "color";
 @import "flash";
+@import "overlay";
 
 @import "header";
 
@@ -8,6 +9,11 @@
 body {
   overflow-y: hidden; /* Скрыть вертикальную полосу прокрутки */
   // height: 100vh;
+}
+
+.logo {
+  display: inline-block !important;
+  width: auto !important;
 }
 
 .truncate-text {
@@ -19,13 +25,11 @@ body {
   max-width: 100%; /* Ширина контейнера, которая будет использоваться для отображения текста */
 }
 
-
 .has-background-grey-light {
   background-color: #d1d1d1 !important;
 }
 
 .main {
-
   margin-bottom: 80px;
   margin-top: 76px;
 }
@@ -48,5 +52,3 @@ body {
   width: max-content;
   height: max-content;
 }
-
-

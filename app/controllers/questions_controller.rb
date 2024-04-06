@@ -35,5 +35,15 @@ class QuestionsController < ApplicationController
 
 
 
+  def new
+
+    @page_title = "Создание теста"
+    @test = Test.new
+    @questions = Question.new
+    @options = Option.new
+
+  end
+
+
 
 end

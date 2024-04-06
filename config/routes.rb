@@ -31,11 +31,24 @@ Rails.application.routes.draw do
   get "/questions/testing/:id", to: "questions#show", as: "question"
   get "/questions/:id", to: "questions#json", as: "question_json"
 
+  # Test Create (создание теста)
+  get "/tests/new", to: "tests#new", as: "test_new"
+  post "/tests", to: "tests#create", as: "test_create"
+
   # Answers
   get "/answers", to: "answers#index", as: "answers"
   get "/answers/:test_id/:user_id", to: "answers#show", as: "answer"
 
   post "/answers", to: "answers#create"
+
+
+
+  ''' Gemini Routes '''
+
+  # get "/gemini", to: "gemini#index", as: "gemini_test"
+  # post "/gemini", to: "gemini#create", as: "gemini_test_create"
+
+  # post "/gemini", to: "gemini#create"
 
   '''
 
