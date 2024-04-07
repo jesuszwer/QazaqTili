@@ -83,6 +83,6 @@ test:
 #
 production:
   <<: *default
-  database: qazaq_tili_production
-  username: qazaq_tili
-  password: <%= ENV["QAZAQ_TILI_DATABASE_PASSWORD"] %>
+  database: d7sssb5c7ialjv
+  username: u7jdlctbkrb3b4
+  password: p6979b69567b31a66435c3f3bbf0fce918dedcbc907174d9216314f2d0a38c3f7
