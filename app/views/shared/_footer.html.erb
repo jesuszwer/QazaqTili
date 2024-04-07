@@ -13,10 +13,7 @@
       <span>Профиль</span>
     </a>
     <% if current_user && current_user.admin %>
-      <a class="navbar-item is-flex is-flex-direction-column is-align-items-center" href="<%= rails_admin_path %>">
-        <span class="icon"><i class="fas fa-tachometer-alt"></i></span>
-        <span>Админка</span>
-      </a>
+  
     <% end %>
   </div>
 </footer>
