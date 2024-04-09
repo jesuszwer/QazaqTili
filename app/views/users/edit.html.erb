@@ -10,9 +10,75 @@
       </div>
     </div>
     <div class="field">
+      <%= form.label :name, class: "label" do %>
+        Имя
+      <% end %>
       <div class="control">
-        <%= form.submit "Сохранить", class: "button is-primary" %>
+        <%= form.text_field :name, class: "input" %>
+      </div>
+    </div>
+    <div class="field">
+      <%= form.label :last_name, class: "label" do %>
+        Фамилия
+      <% end %>
+      <div class="control">
+        <%= form.text_field :last_name, class: "input" %>
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <%= form.submit "Сохранить", class: "button" %>
       </div>
     </div>
   <% end %>
 </div>
+
+<!-- <div class="columns">
+  <div class="column box">
+    <h2 class="title mb-3 has-text-centered">Редактор профиля</h2>
+    <%= form_with(model: @user, url: profile_path, html: {multipart: true }) do |form| %>
+      <!-- <div class="field mb-4">
+        <%= form.label "Фотография пользователя", class: 'is-size-5' %>
+        <%# <p class="subtitle is-size-5 mb-2">Фотография профиля пользователя</p> %>
+        <div class="control mb-2">
+          <div class="file is-fullwidth">
+            <label class="file-label">
+              <%= form.file_field :avatar, class: "file-input" %>
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="bi bi-upload"></i>
+                </span>
+                <span class="file-label">
+                  Нажмите для выбора файла…
+                </span>
+              </span>
+              <span class="file-name" id="file-name"></span>
+            </label>
+          </div>
+        </div>
+        <div class="control is-flex is-justify-content-center box">
+          <p class="subtitle is-size-5 has-text-centered has-text-grey-light" id="avatar-preview-text">Превью фотографии</p>
+          <img id="avatar-preview" src="#" alt="Preview" style="display: none; width: 128px; height: 128px; max-width: 128px; max-height: 128px">
+        </div> 
+    </div>
+    <%#  %>
+    <div class="field mb-4">
+      <%= form.label "Имя", class: 'is-size-5' %>
+      <%= form.text_field :name, class: "input mt-2" %>
+    </div>
+    <div class="field mb-4">
+      <%= form.label "Фамилия", class: 'is-size-5' %>
+      <%= form.text_field :last_name, class: "input mt-2" %>
+    </div>
+  </div>
+  <div class="field mt-4 is-flex is-justify-content-center">
+    <div class="control">
+      <%= link_to "Вернуться к профилю", profile_path, class: "button is-light" %>
+    </div>
+    <div class="control mr-3">
+      <%= form.submit "Сохранить", class: "button" %>
+    </div>
+  </div>
+<% end %>
+</div>
+ -->

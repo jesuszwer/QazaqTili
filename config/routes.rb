@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   # Welcome page
-  get "/welcome", to: "welcome#index"
+  get "/welcome", to: "welcome#index", as: "welcome"
 
   ''' Users routes '''
 
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy", as: "logout"
 
   # Registration
-  get "/signup", to: "users#new"
+  get "/signup", to: "users#new", as: "signup"
   post "/signup", to: "users#create"
 
   # Profile
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   # Questions
   get "/questions", to: "questions#index", as: "questions"
   get "/questions/testing/:id", to: "questions#show", as: "question"
-  get "/questions/:id", to: "questions#json", as: "question_json"
+  get "/questions/current_option/:id", to: "questions#json", as: "question_json"
 
   # Test Create (создание теста)
   get "/tests/new", to: "tests#new", as: "test_new"

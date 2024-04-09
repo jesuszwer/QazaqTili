@@ -1,22 +1,5 @@
-<div class="container is-fluid">
-  <h1 class="title">Главное</h1>
-  <% if current_user != nil %>
-    <p class="subtitle"> Вы вошли как <%= current_user.email %></p>
-  <% else %>
-    <p class="subtitle"> Вы не вошли</p>
-  <% end %>
-  <%# Тут находится модальное окно %>
-  <% if @welcome_check %>
-    <div class="overlay" id="overlay" >
-      <div class="overlay-welcome overlay-content is-flex is-flex-direction-column is-justify-content-space-around">
-        <%# ниже будет логотип %>
-        <figure class="image mb-3">
-          <%= image_tag "/logo.svg", alt: "Логотип", class: "logo" %>
-        </figure>
-        <h2 class="title mb-3">Добро пожаловать на <span class="has-text-primary">QazaqTili</span></h2>
-        <p class="subtitle is-size-4 mb-3">Изучай Казахский язык <span class="has-text-grey is-size-5">бесплатно, весело и эффективно</span></p>
-        <%= link_to "Войдите или зарегестрируйтесь", login_path, class: "button is-primary is-size-5" %>
-      </div>
-    </div>
-  <% end %>
-</div>
+<% if logged_in? %>
+  <%= render partial: 'home/main' %>
+<% else %>
+  <%= render partial: 'home/welcome' %>
+<% end %>

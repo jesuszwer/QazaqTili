@@ -1,20 +1,15 @@
-<header class="navbar is-fixed-top has-background-light z-9999">
-  <div class="container is-fluid has-background-grey-light">
-    <nav class="navbar is-" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand is-flex is-justify-content-space-bettween has-background-grey-light">
-        <div class="column">
-          <h1 class="navbar-item is-size-4 has-text-weight-bold accent-color">QazaqTili</h1>
-        </div>
-        <div class="column is-flex is-align-items-center">
-          <div class="is-4 has-text-grey has-text-centered page-title"><%= @page_title || "Главное" %></div>
-        </div>
-        <% if request.path == "/questions" %>
-          <div class="column is-flex is-align-items-center">
-            <a href="<%= answers_path %>" class="button is-primary">
-            <span>Результаты</span>
-          </a>
+<header class="navbar is-fixed-top z-9998  header has-main-background">
+  <div class="navbar is-flex is-flex-direction-row is-justify-content-space-bettween has-main-background">
+      <div class="column is-flex is-flex-direction-row">
+        <% if present_page? %>
+          <button class="button" id="backButton"><i class="bi bi-arrow-left"></i></button>
         <% end %>
       </div>
-    </nav>
-  </div>
+      <div class="column is-flex is-flex-direction-row is-justify-content-space-around">
+        <h1 class="is-flex is-align-items-center is-size-4 has-text-accent-color has-text-weight-medium">Qazaq Tili</h1>
+        <figure class="image is-flex is-align-items-center">
+          <%= image_tag('/logo.mini.svg', alt: "Логотип", class: "image is-rounded", style: "width: 32px; height: 32px;")%>
+        </figure>
+      </div>
+    </div>
 </header>

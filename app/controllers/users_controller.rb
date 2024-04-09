@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :check_login, only: [:edit, :update, :index]
   def new
     @page_title = "Регистрация"
     @user = User.new
@@ -25,9 +26,9 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(edit_user_params)
-      redirect_to profile_path, notice: 'Аватарка обновлена!'
+      redirect_to profile_path, notice: 'Данные изменены!'
     else
-      flash.now[:alert] = 'Ошибка при загрузке аватарки'
+      flash.now[:alert] = 'Ошибка при изминении данных профиля!'
       render :edit, status: :unprocessable_entity
     end
   end
@@ -36,9 +37,9 @@ class UsersController < ApplicationController
   private
 
   def edit_user_params
-    params.require(:user).permit(:avatar)
+    params.require(:user).permit(:avatar, :name, :last_name)
   end
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :name, :last_name, :password, :password_confirmation)
   end
 end

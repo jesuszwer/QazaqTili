@@ -1,33 +1,26 @@
-<div class="container is-fluid">
-  <h1 class="title is-3 mb-2">Тест: <%= @test.name %></h1>
-  <% @test.questions.each_with_index do |question, index| %>
-    <div class="box mb-4">
-      <p class="subtitle is-size-6">#<%= index+1 %></p>
-      <h2 class="is-size-4 mb-2"><%= question.content %></h2>
-      <ul class="menu-list">
-        <% question.options.shuffle.each do |option| %>
-          <li>
-            <label class="radio py-2 is-size-5">
-              <input type="radio" name="<%= "#{question.id}" %>" value="<%= option.id %>">
-              <%= option.content %>
-            </label>
-            <% if option.correct %>
-              <%# <span class="tag is-success">Правильный ответ</span> %>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <!--<div class="buttons is-centered">
+<h1 class="title is-3 mb-2">Тест: <%= @test.name %></h1>
+<% @test.questions.each_with_index do |question, index| %>
+  <div class="box mb-4">
+    <p class="subtitle is-size-6">#<%= index+1 %></p>
+    <h2 class="is-size-4 mb-2"><%= question.content %></h2>
+    <ul class="menu-list">
+      <% question.options.shuffle.each do |option| %>
+        <li>
+          <label class="radio py-2 is-size-5">
+            <input type="radio" name="<%= "#{question.id}" %>" value="<%= option.id %>">
+            <%= option.content %>
+          </label>
+          <% if option.correct %>
+            <%# <span class="tag is-success">Правильный ответ</span> %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<!--<div class="buttons is-centered">
     <%= button_to "Завершить", root_path, method: :get, id: "finish-test-button", class: "button is-primary has-text-white" %>
   </div> -->
-
-  <div class="buttons is-centered">
-    <button class="button is-primary has-text-white" id="finish-test-button">Завершить</button>
-  </div>
+<div class="buttons is-centered">
+  <button class="button is-primary has-text-white" id="finish-test-button">Завершить</button>
 </div>
-<%# ================Script================================== %>
-<script>
-  
-</script>

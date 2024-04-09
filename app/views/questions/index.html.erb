@@ -1,5 +1,4 @@
-<div class="container is-fluid">
-  <h2 class="title">Все тесты</h2>
+<h2 class="title">Все тесты</h2>
   <div class="mt-5">
     <% @tests.each do |test| %>
       <a href="<%= question_path(test.id) %>">
@@ -22,4 +21,3 @@
       </a>
     <% end %>
   </div>
-</div>

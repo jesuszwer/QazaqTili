@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_04_165022) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_09_161849) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,6 +72,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_04_165022) do
     t.datetime "remember_me_token_expires_at"
     t.string "avatar"
     t.boolean "admin", default: false, null: false
+    t.string "name", limit: 25, default: "Без имени", null: false
+    t.string "last_name", limit: 50, default: "Без фамилии", null: false
     t.index ["admin"], name: "index_users_on_admin", where: "(admin = true)"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token"

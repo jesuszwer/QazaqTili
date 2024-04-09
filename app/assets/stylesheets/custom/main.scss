@@ -6,49 +6,28 @@
 
 @import "footer";
 
-body {
-  overflow-y: hidden; /* Скрыть вертикальную полосу прокрутки */
-  // height: 100vh;
-}
-
-.logo {
-  display: inline-block !important;
-  width: auto !important;
-}
-
-.truncate-text {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3; /* Указывает максимальное количество строк для отображения */
-  max-width: 100%; /* Ширина контейнера, которая будет использоваться для отображения текста */
-}
-
-.has-background-grey-light {
-  background-color: #d1d1d1 !important;
-}
-
-.main {
-  margin-bottom: 80px;
-  margin-top: 76px;
-}
-
-.image {
-  display: block;
-  margin: 0 auto; /* Чтобы изображение было по центру */
-  max-width: 100%; /* Чтобы изображение не выходило за пределы контейнера */
-  height: auto; /* Чтобы сохранить пропорции изображения */
-}
-
-.image.is-inline-block img {
-  border-radius: 50%;
+.main-container {
+  min-height: calc(100vh - 72px - 64px);
+  margin-top: 64px;
+  margin-bottom: 72px;
+  padding: 16px 0;
 }
 
 .is-256x256 {
-  max-width: 256px;
   max-height: 256px;
+  max-width: 256px;
+  min-height: 256px;
+  min-width: 256px;
+}
 
-  width: max-content;
-  height: max-content;
+.notification {
+  position: absolute;
+  width: 100%;
+}
+.z-9999 {
+  z-index: 9999;
+}
+
+.z-9998 {
+  z-index: 9998;
 }

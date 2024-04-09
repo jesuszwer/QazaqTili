@@ -1,0 +1,36 @@
+{ 
+  "test_name": "Тест по переводу слов №102",
+  "type": "Перевод",
+  "questions": [
+    {
+      "question_content": "Как правильно перевести на казахский язык фразу \"Привет, как дела?\"?",
+      "true_answer": "Сәлем, калайсың?",
+      "user_answer": "Саламатсың, қалайсың?",
+      "is_correct": false
+    },
+    {
+      "question_content": "Как переводится на казахский язык слово \"дружба\"?",
+      "true_answer": "Достық",
+      "user_answer": "Достық",
+      "is_correct": true
+    },
+    {
+      "question_content": "Как переводится на казахский язык слово \"молоко\"?",
+      "true_answer": "Сүт",
+      "user_answer": "Күріш",
+      "is_correct": false
+    },
+    {
+      "question_content": "Какой язык влиял на развитие казахского языка?",
+      "true_answer": "Русский",
+      "user_answer": "Турецкий",
+      "is_correct": false
+    },
+    {
+      "question_content": "Как переводится на казахский язык слово \"птица\"?",
+      "true_answer": "Құс",
+      "user_answer": "Құс",
+      "is_correct": true
+    }
+  ]
+}

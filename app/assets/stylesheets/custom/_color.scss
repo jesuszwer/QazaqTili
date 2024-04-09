@@ -1,7 +1,21 @@
 :root {
-  --accent-color: #5caeec;
+  --main-background-color: #e2e2e2;
+  --main-background-color-accent: #d0d0d0;
+  --accent-color: #4faad4;
 }
 
-.accent-color {
+.has-main-background {
+  background-color: var(--main-background-color);
+}
+
+.has-main-background-accent {
+  background-color: var(--main-background-color-accent);
+}
+
+.has-text-accent-color {
   color: var(--accent-color);
+}
+
+.has-main-color {
+  background-color: var(--accent-color);
 }

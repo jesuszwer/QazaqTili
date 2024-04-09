@@ -4,28 +4,22 @@ class AnswersController < ApplicationController
 
   before_action :check_login, only: [:index, :show, :create]
 
-  def create
+  def create # POST запрос на создание ответа от пользователя
     json_data = request.body.read
-
-    # Преобразовываем JSON строку в объект Ruby
-    data_hash = JSON.parse(json_data)
-
-    # Теперь снова преобразуем объект Ruby в JSON строку без экранирования спецсимволов
-    json_data_without_slashes = data_hash.to_json
 
     answers = Answer.new()
     answers.user_id = current_user.id.to_i
     answers.test_id = request.headers["X-Test-ID"].to_i
 
-    answers.answers_json = json_data_without_slashes
-    true_answer_url = url_for(controller: 'questions', action: 'json', id: request.headers["X-Test-ID"].to_i, only_path: false)
+    answers.answers_json = json_data
+    true_answers_url = url_for(controller: 'questions', action: 'json', id: request.headers["X-Test-ID"].to_i, only_path: false) # URL для запроса на получение правильных ответов
 
     if answers.save
-      true_answer_json = URI.open(true_answer_url).read
-      answer_comparison(JSON.parse(answers.answers_json), JSON.parse(true_answer_json), request.headers["X-Test-ID"].to_i)
+      true_answer_json = URI.open(true_answers_url).read
+      answer_comparison(JSON.parse(answers.answers_json), JSON.parse(true_answers_json), request.headers["X-Test-ID"].to_i)
       render json: answers, status: :created
     else
-      render json: { errors: answers.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: answers.errors.full_messages }, alert: "Ошибка при сохранении резульатов, попробуйте ещё раз", status: :unprocessable_entity
     end
   end
 
@@ -40,7 +34,7 @@ class AnswersController < ApplicationController
       @last_score << tr.answers["answers"].last["total_score"].to_i
     end
 
-    @page_title = "Результаты тестов"
+    @page_title = "Результаты"
   end
 
   def show
@@ -54,6 +48,7 @@ class AnswersController < ApplicationController
     if testResult.present?
         data = JSON.parse(testResult.answers)
 
+        #TODO Подумать над изминением, что бы иметь меньше переменных
         @answers = data["answers"]
         @total_true_answers = data["total_true_answers"].to_i
         @total_score = data["total_score"].to_i
@@ -74,12 +69,8 @@ end
 
   private
 
-  def answer_params
-    params.require(:answers).permit(:answers_content)
-  end
-
   # Проверка правильности ответа, принимает 2 json файла на вход и записывает в БД баллы в TestResults
-  def answer_comparison(user_answer, true_answer, test_id)
+  def answer_comparison(user_answer, true_answer, test_id) # Проверка правильности ответов
     # Создаем запись в БД в TestResults
     testResult = TestResult.new
     testResult.user_id = current_user.id

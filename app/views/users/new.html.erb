@@ -1,28 +1,48 @@
-<div class="container is-fluid">
-  <h1 class="title">Регистрация пользователя</h1>
-  <%= form_with(model: @user, url: signup_path) do |form| %>
-    <div class="field">
-      <%= form.label :email, class: 'label' %>
-      <div class="control">
-        <%= form.text_field :email, class: 'input' %>
-      </div>
+<div class="columns">
+  <div class="column box">
+    <div class="column has-text-centered">
+      <h1 class="title">Регистрация пользователя</h1>
     </div>
-    <div class="field">
-      <%= form.label :password, class: 'label' %>
-      <div class="control">
-        <%= form.password_field :password, class: 'input' %>
+    <%= form_with(model: @user, url: signup_path) do |form| %>
+      <div class="field">
+        <%= form.label "Имя", class: 'is-size-4' %>
+        <div class="control">
+          <%= form.text_field :name, class: 'input' %>
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <%= form.label :password_confirmation, 'Подтвердите пароль', class: 'label' %>
-      <div class="control">
-        <%= form.password_field :password_confirmation, class: 'input' %>
+      <div class="field">
+        <%= form.label "Фамилия", class: 'is-size-4' %>
+        <div class="control">
+          <%= form.text_field :last_name, class: 'input' %>
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <div class="control">
-        <%= form.submit 'Зарегистрироваться', class: 'button is-primary' %>
+      <div class="field">
+        <%= form.label "Email почта", class: 'is-size-4' %>
+        <div class="control">
+          <%= form.text_field :email, class: 'input' %>
+        </div>
       </div>
-    </div>
-  <% end %>
+      <div class="field">
+        <%= form.label "Пароль", class: 'is-size-4' %>
+        <div class="control">
+          <%= form.password_field :password, class: 'input' %>
+        </div>
+      </div>
+      <div class="field">
+        <%= form.label :password_confirmation, 'Подтвердите пароль', class: 'is-size-4' %>
+        <div class="control">
+          <%= form.password_field :password_confirmation, class: 'input' %>
+        </div>
+      </div>
+      <div class="field mt-4">
+        <div class="control">
+          <%= form.submit 'Зарегистрироваться', class: 'button has-main-color has-text-white is-fullwidth is-size-4' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="has-text-centered mt-4">
+    или 
+    <%= link_to "Войти", login_path, class: 'label is-size-5 is-text-link' %>
+  </div>
 </div>

@@ -1,5 +1,7 @@
 import $ from "jquery";
 
+/* JS скрипты для уведомлений на проекте */
+
 $(document).on("turbo:load", function () {
   // console.log("loaded Flash.js");
   const $deleteNoticeButton = $("#delete-notice");

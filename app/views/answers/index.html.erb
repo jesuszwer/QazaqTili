@@ -1,20 +1,18 @@
-<div class="container is-fluid">
-  <h2 class="title is-size-3">Результаты</h2>
-  <div class="mt-5">
-    <% @tests.each do |test| %>
-      <div class="box mb-4 is-flex is-align-items-center">
-        <div class="pr-4">
-          <h3 class="is-size-4 has-text-weight-bold mb-2"><%= test.name %></h3>
-          <p class="mb-2"><%= test.description %></p>
-          <div class="is-flex">
-            <% if logged_in? %>
-              <div class="">
-                <%= link_to "Результаты", answer_path(test.id, current_user.id), class: "button is-primary" %>
-              </div>
-            <% end %>
-          </div>
+<h2 class="title is-size-3">Результаты</h2>
+<div class="mt-5">
+  <% @tests.each do |test| %>
+    <div class="box mb-4 is-flex is-align-items-center">
+      <div class="pr-4">
+        <h3 class="is-size-4 has-text-weight-bold mb-2"><%= test.name %></h3>
+        <p class="mb-2"><%= test.description %></p>
+        <div class="is-flex">
+          <% if logged_in? %>
+            <div class="">
+              <%= link_to "Результаты", answer_path(test.id, current_user.id), class: "button is-primary" %>
+            </div>
+          <% end %>
         </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>

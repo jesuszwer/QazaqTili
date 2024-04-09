@@ -1,19 +1,40 @@
-<footer class="navbar is-fixed-bottom has-background-light z-9999">
-  <div class="navbar-menu is-flex is-justify-content-space-around has-background-grey-light">
-    <a class="navbar-item is-flex is-flex-direction-column is-align-items-center" href="<%= root_path %>">
-      <span class="icon"><i class="fas fa-home"></i></span>
-      <span>Главное</span>
-    </a>
-    <a class="navbar-item is-flex is-flex-direction-column is-align-items-center" href="<%= questions_path %>">
-      <span class="icon"><i class="fas fa-question"></i></span>
-      <span>Тестирование</span>
-    </a>
-    <a class="navbar-item is-flex is-flex-direction-column is-align-items-center" href="<%= profile_path %>">
-      <span class="icon"><i class="fas fa-user"></i></span>
-      <span>Профиль</span>
-    </a>
-    <% if current_user && current_user.admin %>
-  
-    <% end %>
-  </div>
+<footer class="navbar is-fixed-bottom z-9998">
+  <% if logged_in? %>
+    <div class="container is-fullwidth has-main-background">
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar is-flex is-justify-content-space-bettween has-main-background">
+          <%#  %>
+          <a class="column navbar-item is-flex is-flex-direction-column is-align-items-center has-text-black" href="<%= questions_path  %>">
+            <span class="icon"><i class="bi bi-info-circle is-size-4"></i></span>
+            <span>Тесты</span>
+          </a>
+          <%#  %>
+          <a class="column navbar-item is-flex is-flex-direction-column is-align-items-center has-text-black" href="<%= root_path %>">
+            <span class="icon"><i class="bi bi-house is-size-4"></i></span>
+            <span>Главное</span>
+          </a>
+          <%#  %>
+          <a class="column navbar-item is-flex is-flex-direction-column is-align-items-center has-text-black" href="<%= profile_path %>">
+            <span class="icon"><i class="bi bi-person-circle is-size-4"></i></span>
+            <span>Профиль</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  <% else %>
+    <div class="container is-fullwidth has-main-background">
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar is-flex is-justify-content-space-bettween has-main-background">
+          <a class="column navbar-item is-flex is-flex-direction-column is-align-items-center has-text-black" href="<%= root_path  %>">
+            <span class="icon"><i class="bi bi-info-circle is-size-4"></i></span>
+            <span>О нас</span>
+          </a>
+          <a class="column navbar-item is-flex is-flex-direction-column is-align-items-center has-text-black" href="<%= login_path %>">
+            <span class="icon"><i class="bi bi-box-arrow-in-left is-size-4"></i></span>
+            <span>Вход</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  <% end %>
 </footer>
