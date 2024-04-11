@@ -2,6 +2,4 @@
 import "@hotwired/turbo-rails";
 import "./controllers";
 
-
-import "./custom/flash";
 import "./custom/main"

@@ -1,21 +1,21 @@
 :root {
-  --main-background-color: #e2e2e2;
-  --main-background-color-accent: #d0d0d0;
+  --main-background-color: #f3f3f3;
+  --main-background-color-accent: #e4e4e4;
   --accent-color: #4faad4;
 }
 
 .has-main-background {
-  background-color: var(--main-background-color);
+  background-color: var(--main-background-color) !important;
 }
 
 .has-main-background-accent {
-  background-color: var(--main-background-color-accent);
+  background-color: var(--main-background-color-accent) !important;
 }
 
 .has-text-accent-color {
-  color: var(--accent-color);
+  color: var(--accent-color) !important;
 }
 
 .has-main-color {
-  background-color: var(--accent-color);
+  background-color: var(--accent-color) !important;
 }

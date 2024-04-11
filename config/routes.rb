@@ -4,9 +4,6 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
-  # Welcome page
-  get "/welcome", to: "welcome#index", as: "welcome"
-
   ''' Users routes '''
 
   # Sessions
@@ -28,12 +25,9 @@ Rails.application.routes.draw do
 
   # Questions
   get "/questions", to: "questions#index", as: "questions"
-  get "/questions/testing/:id", to: "questions#show", as: "question"
-  get "/questions/current_option/:id", to: "questions#json", as: "question_json"
+  get "/questions/:id", to: "questions#show", as: "question"
 
-  # Test Create (создание теста)
-  get "/tests/new", to: "tests#new", as: "test_new"
-  post "/tests", to: "tests#create", as: "test_create"
+  get "/questions-json", to: "questions#new"
 
   # Answers
   get "/answers", to: "answers#index", as: "answers"
@@ -41,14 +35,11 @@ Rails.application.routes.draw do
 
   post "/answers", to: "answers#create"
 
+  # Test Result
+  post "/results", to: "results#create", as: "results"
 
 
-  ''' Gemini Routes '''
 
-  # get "/gemini", to: "gemini#index", as: "gemini_test"
-  # post "/gemini", to: "gemini#create", as: "gemini_test_create"
-
-  # post "/gemini", to: "gemini#create"
 
   '''
 

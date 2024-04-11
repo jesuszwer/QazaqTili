@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_09_161849) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_11_143210) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,25 +22,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_09_161849) do
     t.datetime "updated_at", null: false
     t.index ["test_id"], name: "index_answers_on_test_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
-  end
-
-  create_table "options", force: :cascade do |t|
-    t.string "content"
-    t.bigint "question_id"
-    t.boolean "correct", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["question_id", "correct"], name: "index_options_on_question_id_and_correct", unique: true, where: "(correct = true)"
-    t.index ["question_id"], name: "index_options_on_question_id"
-  end
-
-  create_table "questions", force: :cascade do |t|
-    t.string "content"
-    t.string "question_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "test_id"
-    t.index ["test_id"], name: "index_questions_on_test_id"
   end
 
   create_table "test_results", force: :cascade do |t|
@@ -56,9 +37,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_09_161849) do
   create_table "tests", force: :cascade do |t|
     t.string "name", null: false
     t.text "description"
-    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "json_contents"
+    t.string "types"
     t.index ["name"], name: "index_tests_on_name", unique: true, where: "(name IS NOT NULL)"
   end
 
@@ -81,8 +63,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_09_161849) do
 
   add_foreign_key "answers", "tests"
   add_foreign_key "answers", "users"
-  add_foreign_key "options", "questions"
-  add_foreign_key "questions", "tests"
   add_foreign_key "test_results", "tests"
   add_foreign_key "test_results", "users"
 end

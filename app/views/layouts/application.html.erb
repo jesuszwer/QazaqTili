@@ -13,14 +13,14 @@
   <body>
     <%= render 'shared/header' %>
     <% if notice %>
-      <div class="notification is-primary z-9999">
-        <button class="delete" onclick="this.parentElement.style.display='none'"></button>
+      <div class="notification mb-2 is-info z-9999" id="notification">
+        <button class="delete is-medium" onclick="this.parentElement.style.display='none'"></button>
         <%= notice %>
       </div>
     <% end %>
     <% if alert %>
-      <div class="notification is-danger z-9999">
-        <button class="delete" onclick="this.parentElement.style.display='none'"></button>
+      <div class="notification mb-2 is-danger z-9999" id="notification">
+        <button class="delete is-medium " onclick="this.parentElement.style.display='none'"></button>
         <%= alert %>
       </div>
     <% end %>

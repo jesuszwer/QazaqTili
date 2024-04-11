@@ -1,272 +1,230 @@
-# # Создаем тесты
-# tests = [
-#   { name: "Тест по математике",
-#     description: "Тест по математике",
-#     category: "math"}
-# ]
-
-# questions_data = [
-#   { content: "Сколько будет 2+2?",
-#     question_type: "math",
-#     test_id: 2}
-# ]
-
-# tests.each do |test_attrs|
-#   Test.create!(test_attrs)
-# end
-# puts "Тесты успешно созданы"
-
-
-# questions_data.each do |question_attrs|
-#   Question.create!(question_attrs)
-# end
-# puts "Вопросы успешно созданы"
-
-
-# option_data = [
-#   { content: "2",
-#     question_id: 7,
-#     correct: true},
-#   { content: "3",
-#     question_id: 7,
-#     correct: false},
-#   { content: "4",
-#     question_id: 7,
-#     correct: false},
-#   { content: "5",
-#     question_id: 7,
-#     correct: false}
-# ]
-
-# option_data.each do |option_attrs|
-#   Option.create!(option_attrs)
-# end
-
-# puts "Варианты ответов успешно созданы"
-#
-#
-#
-#
-#
-#
-
-test_results = [
+tests_data = [
   {
-    user_id: 1,
-    test_id: 2,
-    answers: {
-      "questions_result": [
-        "1": "1",
-        "2": "1",
-        "3": "1",
-        "4": "1",
-        "5": "1"
-      ],
-      "total_true_answers": 7,
-      "total_score": 3,
-      "letter_score": "C",
-      "percent_score": 60
-    }
+    name: "Тест по казахскому языку",
+    description: "Тест по казахскому языку",
+    created_at: DateTime.now,
+    updated_at: DateTime.now,
+
+    json_contents: {
+      "type": "общее",
+      "test_name": "Тест по казахскому языку",
+      "questions": [
+        {
+          "question_content": "Как переводится на казахский язык фраза 'Привет, как дела'?",
+          "options": [
+            {
+              "option_content": "Сәлем, несiздердiң дурстықтары жақсы ма?",
+              "is_correct": true
+            },
+            {
+              "option_content": "Салем, несiздiң жақсы ма?",
+              "is_correct": false
+            },
+            {
+              "option_content": "Сәлем, несiздердiң күндерi жақсы ма?",
+              "is_correct": false
+            },
+            {
+              "option_content": "Сәлем, несiздiң кессе жақсы ма?",
+              "is_correct": false
+            }
+          ]
+        },
+        {
+          "question_content": "Как переводится слово 'книга' на казахский язык?",
+          "options": [
+            {
+              "option_content": "Кітап",
+              "is_correct": true
+            },
+            {
+              "option_content": "ТақтаЖ",
+              "is_correct": false
+            },
+            {
+              "option_content": "ПераЖ",
+              "is_correct": false
+            },
+            {
+              "option_content": "КешеЖ",
+              "is_correct": false
+            }
+          ]
+        },
+        {
+          "question_content": "Выберите правильный вариант написания слова 'школа' на казахском языке:",
+          "options": [
+            {
+              "option_content": "Мектеп",
+              "is_correct": true
+            },
+            {
+              "option_content": "Билім",
+              "is_correct": false
+            },
+            {
+              "option_content": "Кітап",
+              "is_correct": false
+            },
+            {
+              "option_content": "Қалай?",
+              "is_correct": false
+            }
+          ]
+        },
+        {
+          "question_content": "Как переводится на казахский язык фраза 'Я люблю казахскую кухню'?",
+          "options": [
+            {
+              "option_content": "Мен қазақ ас артуым",
+              "is_correct": true
+            },
+            {
+              "option_content": "Мен көк артуым",
+              "is_correct": false
+            },
+            {
+              "option_content": "Сіз келе жатырсыз ба?",
+              "is_correct": false
+            },
+            {
+              "option_content": "Таққа емсік береміз ба?",
+              "is_correct": false
+            }
+          ]
+        },
+        {
+          "question_content": "Как переводится слово 'дом' на казахском языке?",
+          "options": [
+            {
+              "option_content": "Үй",
+              "is_correct": true
+            },
+            {
+              "option_content": "Мектеп",
+              "is_correct": false
+            },
+            {
+              "option_content": "Кітап",
+              "is_correct": false
+            },
+            {
+              "option_content": "Деректі",
+              "is_correct": false
+            }
+          ]
+        },
+        {
+          "question_content": "Выберите правильный вариант для слова 'мама' на казахском языке:",
+          "options": [
+            {
+              "option_content": "Ана",
+              "is_correct": true
+            },
+            {
+              "option_content": "Абай",
+              "is_correct": false
+            },
+            {
+              "option_content": "Адам",
+              "is_correct": false
+            },
+            {
+              "option_content": "Алатыр",
+              "is_correct": false
+            }
+          ]
+        },
+        {
+          "question_content": "Как переводится на казахский язык фраза 'Спасибо за помощь'?",
+          "options": [
+            {
+              "option_content": "Көмек үшін рақмет",
+              "is_correct": true
+            },
+            {
+              "option_content": "Бізге көмек қылыңыз",
+              "is_correct": false
+            },
+            {
+              "option_content": "Рахмет, осы жерде",
+              "is_correct": false
+            },
+            {
+              "option_content": "Үкіметке рахмет",
+              "is_correct": false
+            }
+          ]
+        },
+        {
+          "question_content": "Как переводится слово 'солнце' на казахском языке?",
+          "options": [
+            {
+              "option_content": "Күн",
+              "is_correct": true
+            },
+            {
+              "option_content": "Ауа",
+              "is_correct": false
+            },
+            {
+              "option_content": "Аспан",
+              "is_correct": false
+            },
+            {
+              "option_content": "Тау",
+              "is_correct": false
+            }
+          ]
+        },
+        {
+          "question_content": "Выберите правильный вариант для слова 'вода' на казахском языке:",
+          "options": [
+            {
+              "option_content": "Су",
+              "is_correct": true
+            },
+            {
+              "option_content": "Абай",
+              "is_correct": false
+            },
+            {
+              "option_content": "Таң",
+              "is_correct": false
+            },
+            {
+              "option_content": "Ай",
+              "is_correct": false
+            }
+          ]
+        },
+        {
+          "question_content": "Как переводится на казахский язык фраза 'Как тебя зовут'?",
+          "options": [
+            {
+              "option_content": "Сенің атың не?",
+              "is_correct": true
+            },
+            {
+              "option_content": "Сенің ағашың күйде қарай аласыз ба?",
+              "is_correct": false
+            },
+            {
+              "option_content": "Сенің көңіліңде не бар?",
+              "is_correct": false
+            },
+            {
+              "option_content": "Сен ол жерде баста берейін бе?",
+              "is_correct": false
+            }
+          ]
+        }
+      ]
+    },
+    types: "base"
   }
 ]
 
-# test_results.each do |test_result_attrs|
-#   TestResult.create!(test_result_attrs)
-# end
-
-# puts "Результаты тестов успешно созданы"
-
-
-# tests_data = [
-#   {
-#     name: "Проверка знаний",
-#     description: "Базовая проверка знании для установкий вашего текущего знания казахского языка",
-#     category: "base"
-#   }
-# ]
-
-# tests_data.each do |test_attrs|
-#   Test.create!(test_attrs)
-# end
-
-# puts "Тесты успешно созданы"
-
-# questions_data = [
-#   {
-#     content: "Барыс септік жалғауын көрсетіңіз",
-#     question_type: "базовый",
-#     test_id: 4
-#   },
-#   {
-#     content: "Құрмаластардың ішінен шартты бағыныңқылы сабақтасты табыңыз",
-#     question_type: "базовый",
-#     test_id: 4
-#   },
-#   {
-#     content: "Көптік мағына беріп тұрған жалғауды табыңыз.",
-#     question_type: "базовый",
-#     test_id: 4
-#   },
-#   {
-#     content: "Сенің ойың орындалатын шығар?
-#     Сұраулық мағынаны туғызушы сөз табын табыңыз",
-#     question_type: "базовый",
-#     test_id: 4
-#   },
-#   {
-#     content: "Диалект сөздерді көрсетіңіз",
-#     question_type: "базовый",
-#     test_id: 4
-#   },
-#   {
-#     content: "Сөздің ауыспалы мағынасын табыңыз.",
-#     question_type: "базовый",
-#     test_id: 4
-#   },
-#   {
-#     content: "Қалау райлы етістік пен көмекші етістік арқылы жасалған жақсыз сөйлемді табыңыз.",
-#     question_type: "базовый",
-#     test_id: 4
-#   },
-#   {
-#     content: "Төл сөздің төлеу сөзге айналып тұрған түрін көрсетіңіз.",
-#     question_type: "базовый",
-#     test_id: 4
-#   },
-#   {
-#     content: "Басыңқысы еліктеу негізді етістіктен болған тіркесті көрсетіңіз",
-#     question_type: "базовый",
-#     test_id: 4
-#   },
-#   {
-#     content: "Әйтеке бидің шын есімін көрсетіңіз.",
-#     question_type: "базовый",
-#     test_id: 4
-#   },
-#   {
-#     content: "Қарсылықты салаласты табыңыз",
-#     question_type: "базовый",
-#     test_id: 4
-#   },
-#   {
-#     content: "Одағай сөзді табыңыз.",
-#     question_type: "базовый",
-#     test_id: 4
-#   },
-#   {
-#     content: "Аяғынан тік тұрды.
-#     Тіркестің білдіретін мағынасын анықтаңыз.",
-#     question_type: "базовый",
-#     test_id: 4
-#   },
-#   {
-#     content: "«У» дыбысы жуан болып тұрңан сөзді көрсетіңіз",
-#     question_type: "базовый",
-#     test_id: 4
-#   },
-#   {
-#     content: "Сұраулық шылаулы сөйлемді анықтаңыз",
-#     question_type: "базовый",
-#     test_id: 4
-#   }
-# ]
-
-# questions_data.each do |question_attrs|
-#   Question.create!(question_attrs)
-# end
-
-# puts "Questions created"
-
-
-# option_data = [
-#   {
-#     content: "ға, -ге.",
-#     correct: "true"
-#   },
-#   {
-#     content: "-нан, -нен.",
-#     correct: "false"
-#   },
-#   {
-#     content: "-ды, -ді.",
-#     correct: "false"
-#   },
-#   {
-#     content: "-мен, -бен.",
-#     correct: "false"
-#   },
-
-#   #
-
-#   {
-#     content: "ға, -ге.",
-#     correct: "true"
-#   },
-#   {
-#     content: "-нан, -нен.",
-#     correct: "false"
-#   },
-#   {
-#     content: "-ды, -ді.",
-#     correct: "false"
-#   },
-#   {
-#     content: "-мен, -бен.",
-#     correct: "false"
-#   }
-# ]
-
-content_data = [
-  "-нан, -нен.", "-ның, -нің.", "-ға, -ге.", "-ды, -ді.",
-
-  "Емтихан тапсырдық та, қайттық.", "Үзіліс болған соң, далада ойнады.", "Таныс болмағандықтан, жақсы сөйлесе алмадық.", "Сен келмейінше, мен кетпеймін.",
-
-  "Үй жиhаздарын жинау.", "Ауылдың маңы - терең сай.", "Отаным - бақыт ордасы.", "Білімдіден шыққан сөз.",
-
-  "Етіс.", "Есімдік", "Зат есім, етістік.", "Көмекші етістік.",
-
-  "Көпшік, дарбаза.", "Қара, ат.", "Бөз, боз.", "Орман, тоғай.",
-
-  "Қарны үлкейді, қампиды.", "Атамның жасы үлкейді.", "Дәрежесі үлкейген екен.", "Бекболаттың көзі үлкейіп барады.",
-
-  "Он минутта он жылға қартайған болуым керек.", "Оның төбе шашы тік тұрды.", "Менің бір жерге тұрақтамауыма тура келді.",
-
-  "Менің көрсеткім келмейді.","- Мен сізге қонаққа келдім, - деді ол түрі бал - бұл жанып.", "Жүзі бал - бұл жанып: - Мен сізге қонаққа келдім, - деді ол.", "Жүзі бал - бұл жанған ол өзінің қонаққа келгенін айтты.", "Жүзі бал - бұл жанып ол былай деді: - Мен сізге қонаққа келдім.",
-
-  "Ананың өсиеті.", "Найзағай жарқылдады.", "Найзағай жарқ-жұрқ етті.", "Найзағай жарқылынан сескендік.",
-
-  "Сарыбас.", "Дүйсенбай.", "Ақпан.", "Айтық.",
-
-  "Мұхит пен Кенбай айғайласа сөйлеседі, себебі шамалы дауысты Көкдолы бұрқағы есіттірер емес.",
-  "Мал етінің асылдануы сондай - майы аузыңа салдырмайды.",
-  "Өз жігіттеріме көзім түсіп еді, барлығының жүзінен әзірлікті көрдім.",
-  "Байбосыновтың жүзінде әжімнен сау жер жоқ, әйтсе де беті ойнақы еді.",
-
-  "Достар, әрқашан мұқият болыңдар.", "Моһ - моһ, сен менің асау тайым.", "Айналайын - ай, үйін сағынған ғой.",
-  "Айталық, сізбен келістік, сонда не болады?",
-
-  "Ауыспалы мағыналы сөз.", "Негізгі мағыналы сөз.", "Көмекші мағыналы сөз.", "Көп мағыналы сөз.",
-
-  "Жүру.", "Қайту.", "Кету.", "Секіру.",
-
-  "Балақай - ау, келгенің жақсы болды.", "Кешегіні айтып қойғанбысың.", "Ол туралы айтып келген - ді.", "Сен ол туралы сұрама."
-]
-
-options_data = []
-
-
-question_id = 8
-
-content_data.each_slice(4) do |chunk|
-  chunk.each do |content|
-    options_data << { question_id: question_id, content: content }
-  end
-  question_id += 1
+tests_data.each do |test|
+  Test.find_or_create_by(test)
 end
-
-
-options_data.each do |option_attrs|
-  Option.create!(option_attrs)
-end
-
-puts "Options created"

@@ -7,13 +7,13 @@
             <h2 class="title is-4 mb-2"><%= test.name %></h2>
             <p class="truncate-text subtitle"><%= test.description %></p>
             <p class="truncate-text has-text-primary is-size-5">
-              <% case test.category %>
+              <% case test.types %>
                 <% when "base" %>
                   Базовый тест
                 <% when "generated" %>
                   Сгенерированный
                 <% else %>
-                  <%= test.category %>
+                  <%= test.types %>
               <% end %>
             </p>
           </div>

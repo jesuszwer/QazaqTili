@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       redirect_to root_path, notice: 'Logged in!'
     else
       flash.now[:alert] = 'Email or password is invalid'
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
