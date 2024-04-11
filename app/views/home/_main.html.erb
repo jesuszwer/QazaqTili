@@ -4,11 +4,14 @@
     <% if @results.length > 0 %>
       <ul class="menu-list">
         <% @tests.each_with_index do |test, index| %>
-          <li class="is-size-5 mb-2"><span class="has-text-grey-light is-size-6"> <%= @results[index].created_at.strftime("%d.%m.%Y") %></span> <br> <%= link_to "#{index+1}. #{test.name}", answer_path(test_id: test.id, user_id: current_user.id), class: "has-text-accent-color" %></li>
+          <li class="is-size-5 mb-2"><span class="has-text-grey-light is-size-6"> <%= @results[index].created_at.strftime("%d.%m.%Y") %></span> <br>
+            <%= link_to "#{index+1}. #{test.name}", answer_path(test_id: test.id, user_id: current_user.id), class: "has-text-accent-color" %></li>
         <% end %>
       <% else %>
         <p class="subtitle is-italic has-text-centered is-size-5 mb-4 has-text-grey">Нету пройденых тестов</p>
-        <%= link_to "Пройти первый тест", question_path(@tests.first.id), class: "button is-flex is-justify-content-center" %>
+        <% if @tests.length > 0 %>
+          <%= link_to "Пройти первый тест", question_path(@tests.first.id), class: "button is-flex is-justify-content-center" %>
+        <% end %>
       </ul>
     <% end %>
   </div>
