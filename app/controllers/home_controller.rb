@@ -1,12 +1,7 @@
 class HomeController < ApplicationController
   def index
+    @results = TestResult.where(user_id: current_user.id).order(created_at: :desc).limit(3) if current_user.present?
     @tests = Test.all
-
-    unless TestResult.where(user_id: current_user.id).count == 0
-      @results = TestResult.where(user_id: current_user.id).order(created_at: :desc).limit(3)
-    else
-      @results = []
-    end
 
   end
 
